@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  
+  .container-fluid
+    .row
+      -
+        let results = [
+          { name: "Brand", description: "Gibson", price: 900 },
+          { name: "Model", description: "Alto", price: 650 },
+          { name: "Price", description: "Tortex", price: 30 }
+        ]
+
+      each item in results 
+        .col-sm-2 
+          .item 
+            h3= item.name 
+            p Description: #{item.description}
+            p Price: #{item.price}
