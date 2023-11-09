@@ -7,14 +7,15 @@ block content
     .row
       -
         let results = [
-          { name: "Brand", description: "Gibson", price: 900 },
-          { name: "Model", description: "Alto", price: 650 },
-          { name: "Price", description: "Tortex", price: 30 }
+          { guitar: "Guitar 1", guitar_type: "Classical", model: "Yahama", cost: 900 },
+          { guitar: "Guitar 2", guitar_type: "Electric", model: "Ibanez", cost: 1200 },
+          { guitar: "Guitar 3", guitar_type: "Base", model: "Fender", cost: 700 }
         ]
 
       each item in results 
         .col-sm-2 
           .item 
-            h3= item.name 
-            p Description: #{item.description}
-            p Price: #{item.price}
+            h3= item.guitar
+            p Guitar Brand: #{item.guitar_type}
+            p Model: #{item.model}
+            p Cost: #{item.cost}
