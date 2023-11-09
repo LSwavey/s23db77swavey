@@ -1,5 +1,5 @@
 var express = require('express');
-const guitar = controlers=require('./controllers/costume');
+const guitar = controlers=require('./controllers/guitar');
 var router = express.Router();
 
 /* GET home page. */
