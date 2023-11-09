@@ -19,3 +19,15 @@ res.send('NOT IMPLEMENTED: Guitar delete DELETE ' + req.params.id);
 exports.guitar_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: Guitar update PUT' + req.params.id);
 };
+
+// List of all Guitars
+exports.guitar_list = async function(req, res) {
+try{
+theGuitars = await Guitar.find();
+res.send(theGuitars);
+}
+catch(err){
+res.status(500);
+res.send(`{"error": ${err}}`);
+}
+};
