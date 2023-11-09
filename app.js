@@ -36,7 +36,7 @@ db.once("open", function(){
   console.log("Connection to DB succeeded")});
 
 async function recreateDB(){
-  await guitar.deleteMany();
+  await Guitar.deleteMany();
 
   //create 3 new instances of guitar
   let instance1 = new Guitar({
