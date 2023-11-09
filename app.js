@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var guitarsRouter = require('./routes/landon');
+var guitarsRouter = require('./routes/guitars');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var resourceRouter = require('./routes/resource');
@@ -83,7 +83,7 @@ if (reseed) {recreateDB();}
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/landon', guitarsRouter);
+app.use('/guitars', guitarsRouter);
 app.use('/choose', chooseRouter);
 app.use('/board', (req, res, next) => {
   const query = req.query;
