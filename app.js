@@ -23,13 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 require('dotenv').config();
-const connectionString =
-process.env.MONGO_CON
-mongoose = require('mongoose');
-mongoose.connect(connectionString,
-{useNewUrlParser: true,
-useUnifiedTopology: true});
-
+const connectionString = process.env.MONGO_CON
 const mongoose = require('mongoose');
 mongoose.connect(connectionString);
 
@@ -40,6 +34,49 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connectionerror'));
 db.once("open", function(){
   console.log("Connection to DB succeeded")});
+
+async function recreateDB(){
+  await guitar.deleteMany();
+
+  //create 3 new instances of guitar
+  let instance1 = new Guitar({
+    guitar_type: 'Classical',
+    model: 'Yamaha',
+    cost: 900
+  });
+  let instance2 = new Guitar({
+    guitar_type: 'Electric',
+    model: 'Ibanez',
+    cost: 1200
+  });
+  let instance3 = new Guitar({
+    guitar_type: 'Bass',
+    model: 'Fender',
+    cost: 700
+  });
+
+  instance1.save().then(doc=>{
+    console.log('First object saved')}
+  ).catch(err=>{
+    console.error(err)
+  });
+
+  instance2.save().then(doc=>{
+    console.log('Second object saved')}
+  ).catch(err=>{
+    console.error(err)
+  });
+
+  instance3.save().then(doc=>{
+    console.log('Third object saved')}
+  ).catch(err=>{
+    console.error(err)
+  });
+
+}
+
+let reseed = true;
+if (reseed) {recreateDB();}
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
