@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var guitarsRouter = require('./routes/guitars');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
+var resourceRouter = require('./routes/resource');
 
 var app = express();
 
@@ -88,6 +89,7 @@ app.use('/board', (req, res, next) => {
   const query = req.query;
   res.render('board', { title: 'Board', query });
 });
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
