@@ -31,3 +31,16 @@ res.status(500);
 res.send(`{"error": ${err}}`);
 }
 };
+
+// VIEWS
+// Handle a show all view
+exports.guitar_view_all_Page = async function(req, res) {
+    try{
+    theGuitars = await Guitar.find();
+    res.render('guitar', { title: 'Guitar Search Results', results: theGuitars });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
