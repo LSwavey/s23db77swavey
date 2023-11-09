@@ -6,11 +6,7 @@ block content
   .container-fluid
     .row
       -
-        let results = [
-          { guitar: "Guitar 1", guitar_type: "Classical", model: "Yahama", cost: 900 },
-          { guitar: "Guitar 2", guitar_type: "Electric", model: "Ibanez", cost: 1200 },
-          { guitar: "Guitar 3", guitar_type: "Base", model: "Fender", cost: 700 }
-        ]
+        let items = results
 
       each item in results 
         .col-sm-2 
@@ -19,5 +15,4 @@ block content
             p Guitar Brand: #{item.guitar_type}
             p Model: #{item.model}
             p Cost: #{item.cost}
-        
-        let item = results
+
