@@ -16,7 +16,7 @@ exports.guitar_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Guitar delete DELETE ' + req.params.id);
 };
 // Handle Guitar update form on PUT.
-exports.guitar_update_put = function(req, res) {
+//exports.guitar_update_put = function(req, res) {
 //res.send('NOT IMPLEMENTED: Guitar update PUT' + req.params.id);
 // Handle Guitar update form on PUT.
 exports.guitar_update_put = async function(req, res) {
@@ -38,7 +38,6 @@ exports.guitar_update_put = async function(req, res) {
     failed`);
     }
     };
-};
 
 // List of all Guitars
 exports.guitar_list = async function(req, res) {
