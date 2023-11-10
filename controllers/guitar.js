@@ -37,7 +37,7 @@ res.send(`{"error": ${err}}`);
 exports.guitar_view_all_Page = async function(req, res) {
     try{
     theGuitars = await Guitar.find();
-    res.render('guitars', { title: 'Guitar Search Results', results: theGuitars });
+    res.render('Guitar', { title: 'Guitar Search Results', results: theGuitars });
     }
     catch(err){
     res.status(500);
@@ -66,3 +66,14 @@ exports.guitar_create_post = async function(req, res) {
     }
     };
     
+// for a specific Costume.
+exports.guitar_detail = async function(req, res) {
+console.log("detail" + req.params.id)
+try {
+result = await Guitar.findById( req.params.id)
+res.send(result)
+} catch (error) {
+res.status(500)
+res.send(`{"error": document for id ${req.params.id} not found`);
+}
+};
