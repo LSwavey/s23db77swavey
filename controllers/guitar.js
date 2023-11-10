@@ -25,6 +25,7 @@ exports.guitar_update_put = async function(req, res) {
     try {
     let toUpdate = await Guitar.findById( req.params.id)
     // Do updates of properties
+    console.log(toUpdate)
     if(req.body.guitar_type)
     toUpdate.guitar_type = req.body.guitar_type;
     if(req.body.cost) toUpdate.cost = req.body.cost;
