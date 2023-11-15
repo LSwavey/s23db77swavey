@@ -15,7 +15,7 @@ res.send('NOT IMPLEMENTED: Guitar create POST');
 exports.guitar_delete = async function(req, res) {
     console.log("delete " + req.params.id)
     try {
-        result = await Costume.findByIdAndDelete( req.params.id)
+        result = await Guitar.findByIdAndDelete( req.params.id)
         console.log("Removed " + result)
         res.send(result)
     } catch (err) {
