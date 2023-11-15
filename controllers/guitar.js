@@ -12,8 +12,16 @@ exports.guitar_create_post = function(req, res) {
 res.send('NOT IMPLEMENTED: Guitar create POST');
 };
 // Handle Guitar delete form on DELETE.
-exports.guitar_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: Guitar delete DELETE ' + req.params.id);
+exports.guitar_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await Costume.findByIdAndDelete( req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 // Handle Guitar update form on PUT.
 //exports.guitar_update_put = function(req, res) {
