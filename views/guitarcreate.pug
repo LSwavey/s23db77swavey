@@ -21,11 +21,11 @@ block content
       fetch(event.target.action, {
         method: 'POST',
         body: new URLSearchParams(new FormData(event.target))       
-        }).then((resp) => {
+      }).then((resp) => {
           return resp.json();
-        }).then((body) => {
-          alert("Save succeded")
-        }).catch((error) => {
-          alert("Save failed " + error )
-        });
+      }).then((body) => {
+          alert("Save succeeded");
+      }).catch((error) => {
+          alert("Save failed " + error );
+      });
     });
