@@ -7,7 +7,9 @@ var router = express.Router();
 router.get("/", guitar_controllers.guitar_view_all_Page);
 /* GET detail costume page */
 router.get('/detail', guitar_controllers.guitar_view_one_Page);
-
 // GET create guitar page
 router.get('/create', guitar_controllers.guitar_create_Page);
+// GET create update page
+router.get('/update', guitar_controllers.guitar_update_Page);
+
 module.exports = router;

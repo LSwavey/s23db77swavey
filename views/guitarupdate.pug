@@ -1,0 +1,41 @@
+extends layout
+
+block content 
+  h1= title 
+
+  - let guitarid=toShow._id
+  - let guitar_type=toShow.guitar_type 
+  - let guitarmodel=toShow.model 
+  - let guitarcost=toShow.cost 
+
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{guitarid}
+  - let actionid= "/resource/guitars" + guitarid
+
+  form(id='GuitarForm', action= actionid, method="PUT")
+    div.form-group 
+      label.guitarAttr(for='guitar_type') Guitar type 
+      input#guitar_type(type='text', name='guitar_type', value= guitar_type)
+    div.form-group 
+      label.guitarAttr(for='model') Guitar model 
+      input#model(type='text', name='model', value= guitarmodel)
+    div.form-group 
+      label.guitarAttr(for='cost') Guitar cost
+      input#cost(type='text', name='cost', value= guitarcost)
+    input(type="submit")
+
+  script.
+    document.forms['GuitarForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target))       
+      }).then((resp) => {
+        return resp.json();
+      }).then((body) => {
+        alert("Save succeeded");
+      }).catch((error) => {
+        alert("Save failed " + error );
+      });
+    });
