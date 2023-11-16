@@ -26,15 +26,16 @@ block content
     input(type="submit")
 
   script.
-    document.forms['GuitarForm'].addEventListener('submit', (event) => {
+    document.forms.namedItem('GuitarForm').addEventListener('submit', (event) => {
       event.preventDefault();
+      // TODO show user form is being submitted
       fetch(event.target.action, {
         method: 'PUT',
         body: new URLSearchParams(new FormData(event.target))       
       }).then((resp) => {
         return resp.json();
       }).then((body) => {
-        alert("Save succeeded");
+        alert("Save succeeded!");
       }).catch((error) => {
         alert("Save failed " + error );
       });
