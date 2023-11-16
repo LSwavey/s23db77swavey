@@ -125,6 +125,20 @@ exports.guitar_update_Page = async function(req, res) {
             }
     }
 
+// Handle a delete one view with id from query
+exports.guitar_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await Guitar.findById(req.query.id)
+    res.render('guitardelete', { title: 'Guitar Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
 // Handle Costume create on POST.
 exports.guitar_create_post = async function(req, res) {
     console.log(req.body)
