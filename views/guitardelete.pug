@@ -28,12 +28,11 @@ block content
     button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
     button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
 
-  script
+  script.
     function cancel() {
       window.location.href = '/guitars';
     }
 
-  script
     function deleteOnid() {
       console.log("starting delete");
       // delete first
