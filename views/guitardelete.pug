@@ -6,10 +6,11 @@ block content
   if(toShow == null)
     h2 No instance to delete
   else
-  - let guitarid=toShow._id
-  - let guitar_type=toShow.guitar_type 
-  - let guitarmodel=toShow.model 
-  - let guitarcost=toShow.cost 
+    - let guitarid = toShow._id
+    - let guitar_type = toShow.guitar_type 
+    - let guitarmodel = toShow.model 
+    - let guitarcost = toShow.cost 
+    - let actionid = "/resource/guitars/" + guitarid  // Define actionid
     div 
       div.row
         div(class='guitarAttr mr-3') Guitar ID is: 
@@ -25,24 +26,25 @@ block content
         div #{guitarcost}
       
     button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
-    button(class=="btn btn-secondary m-2" onclick="cancel()") Cancel
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
 
   script
     function cancel() {
-      window.location.href='/guitars'
+      window.location.href = '/guitars';
     }
-  script 
+
+  script
     function deleteOnid() {
-      console.log("starting delete")
-      //delete first
+      console.log("starting delete");
+      // delete first
       fetch(actionid, {
-          method: 'DELETE'
+        method: 'DELETE'
       }).then((resp) => {
-          return resp.json();
+        return resp.json();
       }).then((body) => {
-          alert("Delete succeeded")
-          window.location=href='/guitars'
+        alert("Delete succeeded");
+        window.location.href = '/guitars';
       }).catch((error) => {
-          alert("Delete failed" + error)
+        alert("Delete failed" + error);
       });
     }
