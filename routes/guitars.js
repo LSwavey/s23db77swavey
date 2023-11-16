@@ -6,5 +6,5 @@ var router = express.Router();
 // router.get('/', guitar.guitar_view_all_Page);
 router.get("/", guitar.guitar_view_all_Page);
 /* GET detail costume page */
-router.get('/detail', guitar_controllers.guitar_view_one_Page);
+router.get('/detail', guitar.guitar_view_one_Page);
 module.exports = router;
