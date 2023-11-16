@@ -4,9 +4,9 @@ exports.guitar_list = function(req, res) {
 res.send('NOT IMPLEMENTED: Guitar list');
 };
 // for a specific Guitar.
-exports.guitar_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: Guitar detail: ' + req.params.id);
-};
+//exports.guitar_detail = function(req, res) {
+//res.send('NOT IMPLEMENTED: Guitar detail: ' + req.params.id);
+//};
 // Handle Guitar create on POST.
 exports.guitar_create_post = function(req, res) {
 res.send('NOT IMPLEMENTED: Guitar create POST');
@@ -80,6 +80,20 @@ exports.guitar_view_all_Page = async function(req, res) {
     catch(err){
     res.status(500);
     res.send(`{"error": ${err}}`);
+    }
+    };
+
+// Handle a show one view with id specified by query
+exports.guitar_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Guitar.findById( req.query.id)
+    res.render('guitardetail',
+    { title: 'Guitar Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
     }
     };
 
