@@ -1,16 +1,16 @@
 var Guitar = require('../models/guitar');
 // List of all Costumes
-exports.guitar_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Guitar list');
-};
+//exports.guitar_list = function(req, res) {
+//res.send('NOT IMPLEMENTED: Guitar list');
+//};
 // for a specific Guitar.
 //exports.guitar_detail = function(req, res) {
 //res.send('NOT IMPLEMENTED: Guitar detail: ' + req.params.id);
 //};
 // Handle Guitar create on POST.
-exports.guitar_create_post = function(req, res) {
-res.send('NOT IMPLEMENTED: Guitar create POST');
-};
+//exports.guitar_create_post = function(req, res) {
+//res.send('NOT IMPLEMENTED: Guitar create POST');
+//};
 // Handle Guitar delete form on DELETE.
 exports.guitar_delete = async function(req, res) {
     console.log("delete " + req.params.id)
@@ -115,14 +115,14 @@ exports.guitar_create_Page = function(req, res) {
 // query provides the id
 exports.guitar_update_Page = async function(req, res) {
     console.log("update view for item "+req.query.id)
-    try{
-    let result = await Guitar.findById(req.query.id)
-    res.render('guitarupdate', { title: 'Guitar Update', toShow: result });
-    }
-    catch(err){
-    res.status(500)
-    res.send(`{'error': '${err}'}`);
-    }
+        try{
+            let result = await Guitar.findById(req.query.id)
+            res.render('guitarupdate', { title: 'Guitar Update', toShow: result });
+            }
+        catch(err){
+            res.status(500)
+            res.send(`{'error': '${err}'}`);
+            }
     }
 
 // Handle Costume create on POST.
