@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+
+  - let guitarid=toShow._id
+  - let guitar_type=toShow.guitar_type 
+  - let guitarmodel=toShow.model 
+  - let guitarcost=toShow.cost 
+  div 
+    div.row
+      div(class='guitarAttr mr-3') Guitar ID is: 
+      div #{guitarid}
+    div.row
+      div(class='guitarAttr mr-3') Guitar Type is: 
+      div #{guitar_type}
+    div.row
+      div(class='guitarAttr mr-3') Guitar Model is: 
+      div #{guitarmodel} 
+    div.row
+      div(class='guitarAttr mr-3') Guitar Cost is: 
+      div #{guitarcost}
