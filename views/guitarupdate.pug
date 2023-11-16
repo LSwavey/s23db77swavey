@@ -11,7 +11,7 @@ block content
   div.row(class='mb-2')
     div.mr-1 ID is
     div #{guitarid}
-  - let actionid= "/resource/guitars" + guitarid
+  - let actionid = "/resource/guitars/" + guitarid  
 
   form(id='GuitarForm', action= actionid, method="PUT")
     div.form-group 
