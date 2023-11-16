@@ -1,0 +1,31 @@
+extends layout
+
+block content 
+  h1= title 
+
+  form(id='GuitarForm', action="resource/guitars", method="POST")
+    div.form-group 
+      label.guitarAttr(for='guitar_type') Guitar type 
+      input#guitar_type(type='text', name='guitar_type')
+    div.form-group 
+      label.guitarAttr(for='model') Guitar model 
+      input#model(type='text', name='model')
+    div.form-group 
+      label.guitarAttr(for='cost') Guitar cost
+      input#cost(type='text', name='cost')
+    input(type="submit")
+
+  script
+    document.forms['GuitarForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target))       
+        }).then((resp) => {
+          return resp.json();
+        }).then((body) => {
+          alert("Save succeded")
+        }).catch((error) => {
+          alert("Save failed " + error )
+        });
+    });
