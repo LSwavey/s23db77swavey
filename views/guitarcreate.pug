@@ -22,7 +22,7 @@ block content
         method: 'POST',
         body: new URLSearchParams(new FormData(event.target))       
       }).then((resp) => {
-        return resp.json();
+        return resp.text();
       }).then((body) => {
         alert("Save succeeded");
       }).catch((error) => {

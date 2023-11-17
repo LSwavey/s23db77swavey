@@ -33,7 +33,7 @@ block content
         method: 'PUT',
         body: new URLSearchParams(new FormData(event.target))       
       }).then((resp) => {
-        return resp.json();
+        return resp.text();
       }).then((body) => {
         alert("Save succeeded!");
       }).catch((error) => {
