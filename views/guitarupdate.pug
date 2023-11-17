@@ -8,9 +8,11 @@ block content
   - let guitarmodel=toShow.model 
   - let guitarcost=toShow.cost 
 
+  - let destination = `dispatch(\"/guitars/update?id=${item._id}\")`
   div.row(class='mb-2')
     div.mr-1 ID is
     div #{guitarid}
+      button.btn(class = "btn-primary m-1", onclick=destination) Update
   - let actionid = "/resource/guitars/" + guitarid  
 
   form(id='GuitarForm', action= actionid, method="PUT")
@@ -40,3 +42,6 @@ block content
         alert("Save failed " + error );
       });
     });
+    function dispatch(path){
+      window.location.href=path
+    }
