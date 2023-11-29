@@ -1,17 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Making a change in the paragraph text
-  button(type="button" class="btn btn-secondary" onclick="goFaster()") Press Me
-  div(id="faster") Increase the speed
-
-  script.
-    var mph = 20;
-    var change = 1;
-    function goFaster () {
-      mph += change;
-      change += 1;
-      var div = document.getElementById('faster');
-      div.textContent = 'MPH ' + mph + ' change ' + change;
-    }
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/costumes") Take me to guitars
+    br
+    a(href="/logout") Logout
