@@ -1,7 +1,7 @@
 extends layout
 
-block content 
-  h1= title 
+block content
+  h1= title
 
   - let guitarid=toShow._id
   - let guitar_type=toShow.guitar_type 
@@ -27,17 +27,27 @@ block content
     input(type="submit")
 
   script.
-    document.forms.namedItem('GuitarForm').addEventListener('submit', (event) => {
+    document.forms.namedItem('GuitarForm').addEventListener('submit', async (event) => {
       event.preventDefault();
-      // TODO show user form is being submitted
-      fetch(event.target.action, {
-        method: 'PUT',
-        body: new URLSearchParams(new FormData(event.target))       
-      }).then((resp) => {
-        return resp.text();
-      }).then((body) => {
-        alert("Save succeeded!");
-      }).catch((error) => {
-        alert("Save failed " + error );
-      });
+
+      const form = event.target;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(form)),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("Save succeeded!");
+        } else {
+          // Handle validation errors
+          const errors = data.errors.join('\n');
+          alert("Save failed due to validation errors:\n" + errors);
+        }
+      } catch (error) {
+        alert("Save failed " + error);
+      }
     });

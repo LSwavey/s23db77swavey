@@ -1,35 +1,33 @@
 extends layout
 
-block content   
-    h1= title
-    - let guitars=results
-    div(class="container-fluid")
+block content
+  h1= title
+
+  //- Add button to go to create page
+  a.btn.btn-primary(href='/guitars/create', role='button') Create Guitar
+
+  - let guitars = results
+
+  div(class="container-fluid")
     div(class="row m-1")
-        each guitar in guitars
-            - let destinationupdate = `dispatch(\"/guitars/update?id=${guitar._id}\")`
-            - let destinationcreate = `dispatchCreate(\"/guitars/create\")`
-            - let destinationdelete = `dispatchDelete(\"/guitars/delete?id=${guitar._id}\")`
-            - let destinationdetail = `dispatch(\"/guitars/detail/?id=${guitar._id}\")`
-            div(class="col-ml-1 btn btn-light") #{guitar._id} - #{guitar.guitar_type} - #{guitar.model} - #{guitar.cost}
+      each guitar in guitars
+        - let destinationupdate = `/guitars/update?id=${guitar._id}`
+        - let destinationdelete = `/guitars/delete?id=${guitar._id}`
+        - let destinationdetail = `/guitars/detail/?id=${guitar._id}`
 
-                //- button.btn( class="btn-primary ml-1", onclick= destinationcreate) Create
+        div(class="col-ml-1 btn btn-light")
+          | #{guitar._id} - #{guitar.guitar_type} - #{guitar.model} - #{guitar.cost}
+          
+          //- Add button to go to details view
+          a.btn.btn-secondary(href=destinationdetail, role='button', class='ml-1') Details
+          
+          //- Add button to go to update view
+          a.btn.btn-info(href=destinationupdate, role='button', class='ml-1') Update
+          
+          //- Add button to go to delete view
+          a.btn.btn-danger(href=destinationdelete, role='button', class='ml-1') Delete
 
-                //- button.btn( class="btn-secondary ml-1", onclick= destinationdetail) Details 
-
-                button.btn( class="btn-info ml-1", onclick= destinationupdate) Update
-
-                //- button.btn( class="btn-danger ml-1", onclick= destinationdelete) Delete
-    script.
-        function dispatch(path){
-        window.location.href=path
-        }
-        //- function buy(itemNo)
-        //- {
-        //-     alert(`You purchased Item ${itemNo+1}`)
-        //- }
-        //- function dispatchCreate(path){
-        //-     window.location.href=path
-        //- }
-        //- function dispatchDelete(path){
-        //-     window.location.href=path
-        //- }
+  script.
+    function dispatch(path) {
+      window.location.href = path;
+    }

@@ -3,6 +3,22 @@ var passport = require('passport');
 var router = express.Router();
 var Account = require('../models/account');
 
+// A little function to check if we have an authorized user and continue on
+// redirect to login.
+const secured = (req, res, next) => {
+  if (req.user){
+  return next();
+  }
+  res.redirect("/login");
+  }
+
+  // Route for the update page - apply secured middleware here
+router.get('/update', secured, function(req, res) {
+  // Render the update page
+  res.render('update', { title: 'Guitar App Update', user: req.user });
+});
+  
+
 router.get('/', function(req, res) {
   //console.log('req==>',req.user);
   res.render('index', { title: 'Guitar App', user: req.user });
