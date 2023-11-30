@@ -4,6 +4,7 @@ var router = express.Router();
 var Account = require('../models/account');
 
 router.get('/', function(req, res) {
+  //console.log('req==>',req.user);
   res.render('index', { title: 'Guitar App', user: req.user });
 });
 
@@ -39,9 +40,9 @@ router.post('/register', function(req, res) {
     });
 });
 
-var express = require('express');
+/*var express = require('express');
 var passport = require('passport');
-var router = express.Router();
+var router = express.Router();*/
 
 router.get('/login', function(req, res) {
   res.render('login', { title: 'Guitar App Login', user: req.user });
@@ -49,14 +50,14 @@ router.get('/login', function(req, res) {
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
   res.redirect('/');
-});
+  });
 
-router.get('/logout', function(req, res) {
-  req.logout(function(err) {
+  router.get('/logout', function(req, res) {
+    req.logout(function(err) {
     if (err) { return next(err); }
     res.redirect('/');
-  });
-});
+    });
+    });
 
 router.get('/ping', function(req, res) {
   res.status(200).send('pong!');
